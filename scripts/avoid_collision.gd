@@ -3,10 +3,12 @@ extends Node
 export (NodePath) onready var self_body = get_node(self_body) as PhysicsBody
 export (NodePath) onready var proximity_area = get_node(proximity_area) as Area
 
+#acceleration or speed at it will try to avoid the obstacle
 export var linear_acceleration_max := 20.0
 
 var proximity_bodies: Array = []
 
+#add this value in your move code as speed or acceleration
 var acceleration: Vector3 = Vector3()
 
 var _first_neighbor: PhysicsBody
