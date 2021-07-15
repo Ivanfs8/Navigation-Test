@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "KinematicBody",
 "class": "Agent",
 "language": "GDScript",
-"path": "res://Agent.gd"
+"path": "res://scripts/agent.gd"
 }, {
 "base": "Reference",
 "class": "GSAIAgentLocation",
@@ -162,7 +162,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "TweenRotation",
 "language": "GDScript",
-"path": "res://tween_rotation.gd"
+"path": "res://scripts/tween_rotation.gd"
 } ]
 _global_script_class_icons={
 "Agent": "",

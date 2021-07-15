@@ -1,8 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://tween_rotation.gd" type="Script" id=1]
-[ext_resource path="res://Agent.gd" type="Script" id=2]
-[ext_resource path="res://avoid_collision.gd" type="Script" id=3]
+[ext_resource path="res://scripts/stear_agent.gd" type="Script" id=1]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.795948
@@ -17,7 +15,7 @@ rings = 2
 [sub_resource type="SpatialMaterial" id=3]
 params_diffuse_mode = 1
 params_specular_mode = 1
-albedo_color = Color( 1, 0, 0, 1 )
+albedo_color = Color( 0.0392157, 0.760784, 0.952941, 1 )
 metallic_specular = 0.48
 roughness = 0.24
 anisotropy_enabled = true
@@ -39,22 +37,8 @@ clearcoat_gloss = 0.5
 anisotropy_enabled = true
 anisotropy = 0.7
 
-[sub_resource type="SphereShape" id=6]
-radius = 2.8
-
-[node name="Agent" type="KinematicBody"]
-collision_mask = 3
-script = ExtResource( 2 )
-
-[node name="TweenRotation" type="Node" parent="."]
+[node name="StearAgent" type="KinematicBody"]
 script = ExtResource( 1 )
-only_y_axis = true
-
-[node name="AvoidCollision" type="Node" parent="."]
-script = ExtResource( 3 )
-self_body = NodePath("..")
-proximity_area = NodePath("../ProximityArea")
-linear_acceleration_max = 15.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
@@ -69,10 +53,3 @@ material/0 = SubResource( 3 )
 transform = Transform( 1, 0, 0, 0, -0.162172, 0.986762, 0, -0.986762, -0.162172, 0, 0.644583, -0.442994 )
 mesh = SubResource( 4 )
 material/0 = SubResource( 5 )
-
-[node name="ProximityArea" type="Area" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape" type="CollisionShape" parent="ProximityArea"]
-shape = SubResource( 6 )
