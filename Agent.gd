@@ -14,14 +14,14 @@ var path_ind: int
 
 var velocity: Vector3 = Vector3()
 
-func _physics_process(_delta: float):
+func _physics_process(_delta: float) -> void:
 	if path_ind < path.size():
 		var current_point: Vector3 = path[path_ind]
 		var move_vec: Vector3 = (path[path_ind] - global_transform.origin).normalized()
 		
 		#var velocity: Vector3 = move_vec * delta * move_speed
 		
-		velocity = move_and_slide(move_vec * move_speed, Vector3.UP)
+		velocity = move_and_slide(move_vec * move_speed + $AvoidCollision.acceleration, Vector3.UP)
 		
 		#translate(velocity)
 		
@@ -30,12 +30,13 @@ func _physics_process(_delta: float):
 			if path_ind < path.size(): 
 				tween_rot.tween_look_at_deg(get_node("Mesh"), path[path_ind], rot_speed)
 
-func move_to(target: Vector3):
+func move_to(target: Vector3) -> void:
 	var dict: Dictionary = nav.find_path(global_transform.origin, target)
 	path = dict["points"]
 	path_ind = 0
 	
-	tween_rot.tween_look_at_deg(get_node("Mesh"), path[1], rot_speed)
+	if 1 < path.size():
+		tween_rot.tween_look_at_deg(get_node("Mesh"), path[1], rot_speed)
 	
 	if debug_path == null: return
 	debug_path.clear()
@@ -43,4 +44,3 @@ func move_to(target: Vector3):
 	for p in path:
 		debug_path.add_vertex(p)
 	debug_path.end()
-	
