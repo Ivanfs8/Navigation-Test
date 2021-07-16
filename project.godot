@@ -160,6 +160,11 @@ _global_script_classes=[ {
 "path": "res://addons/com.gdquest.godot-steering-ai-framework/GSAIUtils.gd"
 }, {
 "base": "Node",
+"class": "NavigationManager",
+"language": "GDScript",
+"path": "res://scripts/navigation_manager.gd"
+}, {
+"base": "Node",
 "class": "TweenRotation",
 "language": "GDScript",
 "path": "res://scripts/tween_rotation.gd"
@@ -195,6 +200,7 @@ _global_script_class_icons={
 "GSAISteeringBehavior": "",
 "GSAITargetAcceleration": "",
 "GSAIUtils": "",
+"NavigationManager": "",
 "TweenRotation": ""
 }
 
